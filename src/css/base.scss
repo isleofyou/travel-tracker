@@ -4,3 +4,34 @@
 body {
   background: $primary-background;
 }
+
+header {
+  background: $primary-color;
+  display: flex;
+  justify-content: center;
+}
+
+.all-trips {
+  background: $secondary-color;
+  height: 100%;
+  width: 50%;
+  overflow: auto;
+  float: left;
+  position: relative;
+  }
+
+.traveler-trip {
+  border: 1px solid #b00b69;
+}
+
+.total-spent {
+  background: $secondary-color;
+  height: 100%;
+  width: 50%;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: -webkit-xxx-large;
+}
+
