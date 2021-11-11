@@ -20,6 +20,16 @@ header {
   position: relative;
   }
 
+.pending-trips{
+  
+  background: $tertiary-color;
+  height: 200px;
+  width: 100%;
+  overflow: auto;
+  float: left;
+  position: relative;
+}
+
 .traveler-trip {
   border: 1px solid #b00b69;
 }
@@ -35,3 +45,6 @@ header {
   font-size: xx-large;
 }
 
+.hidden {
+  visibility: hidden;  
+}
