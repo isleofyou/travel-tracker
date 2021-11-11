@@ -1,31 +1,7 @@
-// const fetchData = (data) => {
-//   return fetch(`http://localhost:3001/api/v1/${data}`)
-//     .then(response => response.json())
-// }
+const getAllTravelers = fetch('http://localhost:3001/api/v1/travelers')
+// const getSingleTraveler = fetch(`http://localhost:3001/api/v1/travelers/${id}`)
+const getAllTrips = fetch('http://localhost:3001/api/v1/trips')
+const getAllDestinations = fetch('http://localhost:3001/api/v1/destinations')
 
-const getAllTravelers = () => {
-  return fetch('http://localhost:3001/api/v1/travelers')
-    .then(response => response.json())
-}
-
-const getSingleTraveler = (id) => {
-  return fetch(`http://localhost:3001/api/v1/travelers/${id}`)
-    .then(response => response.json())
-}
-
-const getAllTrips = () => {
-  return fetch('http://localhost:3001/api/v1/trips')
-    .then(response => response.json())
-}
-
-const getAllDestinations = () => {
-	return fetch('http://localhost:3001/api/v1/destinations')
-	  .then(response => response.json())
-}
-
-const getAllDestinations = () => {
-	return fetch('http://localhost:3001/api/v1/destinations')
-	  .then(response => response.json())
-}
-
+module.exports = { getAllTravelers, getAllTrips, getAllDestinations }
 
