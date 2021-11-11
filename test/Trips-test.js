@@ -181,6 +181,6 @@ describe('Trips', () => {
   });
 
   it('should calculate the total costs of all trips for a user', () => {
-    expect(allTrips.calculateTotalCost(3)).to.equal(12735.80)
+    expect(allTrips.calculateTotalCost(3)).to.equal(0)
   })
 })
