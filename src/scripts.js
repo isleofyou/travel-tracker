@@ -22,6 +22,23 @@ const newTripDuration = document.querySelector("#trip-duration");
 const newTripPeopleCount = document.querySelector("#number-of-people");
 const pendingTrips = document.querySelector(".pending-trips");
 const submitTrip = document.querySelector(".submit-new-trip");
+const username = document.querySelector("#username");
+const password = document.querySelector("#password");
+const loginButton = document.querySelector(".submit-login");
+const loginPage = document.querySelector(".login-page");
+const userDashboard = document.querySelector('.dashboard');
+const loginError = document.querySelector('.login-error');
+const homeMessage = document.querySelector('.home-message');
+
+const userLogin = () => {
+if (password.value !== 'travel') {
+    loginError.innerText = `Incorrect username / password`;
+  } else {
+    loginPage.classList.add('hidden');
+    userDashboard.classList.remove('hidden');
+    loginToDashboard();
+  }
+}
 
 const planNewTrip = () => {
   pendingTrips.innerHTML += `
@@ -33,7 +50,6 @@ const planNewTrip = () => {
       <p>Price: ${calculateNewTripCost()}
                 + ${calculateNewTripCost() * .1} (agent's fee) = Total: $${Math.round(100 * (calculateNewTripCost() * 1.1)) / 100}</p>
       <p>Status: Pending</p>
-
   </div>  
   `;
 }
@@ -59,21 +75,33 @@ const getData = () => {
     createTravelers(values[0].travelers)
     createTrips(values[1].trips, values[2].destinations);
   })
-  
-  
 }
 
 const createTravelers = (data) => {
   allTravelers = new Travelers(data)
   allTravelers.createAllTravelers();
-  getRandomUser();
 }
 
 const createTrips = (data, secondData) => {
   allTrips = new Trips(data, secondData)
   allTrips.createDestinations();
-  updateTotalSpent();
+
+}
+
+const loginToDashboard = () => {
+  getUserInfo();
   updateTrips();
+  updateTotalSpent();
+  updateHomeMessage();
+}
+
+const getUserInfo = () => {
+  currentUser = allTravelers.findTraveler(`${username.value}`);
+  console.log(currentUser)
+}
+
+const updateHomeMessage = () => {
+  homeMessage.innerText = `Hi ${currentUser.name}!`;
 }
 
 const updateTrips = () => {
@@ -87,10 +115,6 @@ const updateTrips = () => {
         </div>  
         `
   })
-}
-
-const getRandomUser = () => {
-  currentUser = allTravelers.findTraveler(allTravelers.getRandomUser());
 }
 
 const updateTotalSpent = () => {
@@ -123,8 +147,12 @@ const submitNewTripForm = () => {
   showNewTripForm();
 }
 
-
-
 window.addEventListener('load', pageLoad);
 planTripButton.addEventListener('click', showNewTripForm);
 submitTrip.addEventListener('click', submitNewTripForm);
+loginButton.addEventListener('click', userLogin);
+password.addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    userLogin();
+  }
+});

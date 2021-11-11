@@ -15,7 +15,7 @@ class Travelers {
 
   findTraveler(data) {
     let result = this.createdTravelers.find((traveler) => {
-      return traveler.id === data;
+      return traveler.login === data;
     }) 
     return result;
   }

@@ -5,10 +5,14 @@ body {
   background: $primary-background;
 }
 
-header {
+@mixin header {
   background: $primary-color;
   display: flex;
   justify-content: center;
+}
+
+h1 {
+  @include header
 }
 
 .all-trips {
@@ -31,7 +35,7 @@ header {
 }
 
 .traveler-trip {
-  border: 1px solid #b00b69;
+  border: 1px solid $primary-color;
 }
 
 .total-spent {
@@ -43,6 +47,10 @@ header {
   justify-content: center;
   align-items: center;
   font-size: xx-large;
+}
+
+.login-error {
+  color: red;
 }
 
 .hidden {
