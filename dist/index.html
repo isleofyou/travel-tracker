@@ -16,43 +16,51 @@
     </section>
   </header>
   <main>
-    <h2>Your approved trips:</h2>
-    <section class="all-trips">
-  
+    <section class="greeting">
+      <h1 class ="home-message"></h1>
     </section>
-    <section class ="total-spent">
-      <div>
-        <h3></h3>
-      </div>
-    </section>
-    <section class="new-trip-button">
-      <button type="button" class="new-trip">Plan a new trip</button>
-    </section>
-    <section class="new-trip-form hidden">
-      <label for="start">Start date:</label>
-      <input type="date" id="new-trip-date" name ="trip-start"
-              value="2021-11-11"
-              min="2021-11-11" max="2023-11-11">
-      <label for="tripduration">Number of days:</label>
-      <input type="number" id="trip-duration" name="tripduration"
-              min="1" max="100">
-     <label for="numberofpeople">Number of people:</label>
-      <input type="number" id="number-of-people" name="numberofpeople"
-      min="1" max="100">
-      <label for="destinations">Choose your destination from the list:</label>
-      <input list="places" name="destinations" id="destinations">
-      <datalist id="places">
-      </datalist>
-      <input type="submit" class="submit-new-trip">
-    </section>
-    <h2>Your pending trips:</h2>
-    <section class="pending-trips">
-  
-    </section>
+    <div class="dashboard hidden">
+      <h2>Your approved trips:</h2>
+      <section class="all-trips">
+      </section>
+      <section class ="total-spent">
+        <div>
+          <h3></h3>
+        </div>
+      </section>
+      <section class="new-trip-button">
+        <button type="button" class="new-trip">Plan a new trip</button>
+      </section>
+      <section class="new-trip-form hidden">
+        <label for="start">Start date:</label>
+        <input type="date" id="new-trip-date" name ="trip-start"
+                value="2021-11-11"
+                min="2021-11-11" max="2023-11-11">
+        <label for="tripduration">Number of days:</label>
+        <input type="number" id="trip-duration" name="tripduration"
+                min="1" max="100">
+      <label for="numberofpeople">Number of people:</label>
+        <input type="number" id="number-of-people" name="numberofpeople"
+        min="1" max="100">
+        <label for="destinations">Choose your destination from the list:</label>
+        <input list="places" name="destinations" id="destinations">
+        <datalist id="places">
+        </datalist>
+        <input type="submit" class="submit-new-trip">
+      </section>
+      <h2>Your pending trips:</h2>
+      <section class="pending-trips">
+      </section>
+    </div>
+  <div class="login-page">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    <label for="password">Password:</label>
+    <input type="text" id="password" name="password"><br><br>
+    <p class="login-error"></p>
+    <button type="button" class="submit-login">Log in</button>
+  </div>
   </main>
-  
-
   <script src="bundle.js"></script>
-
 </body>
 </html>
