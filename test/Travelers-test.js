@@ -65,6 +65,7 @@ describe('Travelers', () => {
     ];
 
     allTravelers = new Travelers(travelersRepo);
+    allTravelers.createAllTravelers();
   });
 
   it('should be a function', () => {
