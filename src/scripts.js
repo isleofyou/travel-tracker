@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-// import Traveler from '../src/Traveler.js';
 import Travelers from '../src/Travelers';
 import Trips from '../src/Trips.js';
 import './css/base.scss';
@@ -31,7 +30,7 @@ const loginError = document.querySelector('.login-error');
 const homeMessage = document.querySelector('.home-message');
 
 const userLogin = () => {
-if (password.value !== 'travel') {
+  if (password.value !== 'travel') {
     loginError.innerText = `Incorrect username / password`;
   } else {
     loginPage.classList.add('hidden');
@@ -53,6 +52,42 @@ const planNewTrip = () => {
   </div>  
   `;
 }
+
+const locateDestinationID = (newDestination) => {
+  let result = allTrips.destinations.find((destination) => {
+    return destination.destination === newDestination;
+  })
+  return result.id
+}
+
+const submitNewTrip = () => {
+  let newTrip = {
+    id: (allTrips.trips.length + 1),
+    userID: currentUser.id, 
+    destinationID: locateDestinationID(newTripDestination.value), 
+    travelers: newTripPeopleCount.value,
+    date: dayjs(newTripDate.value).format('YYYY/MM/DD'),
+    duration: newTripDuration.value,
+    status: 'pending',
+    suggestedActivities: [],
+  };
+  console.log(newTrip);
+  console.log(JSON.stringify(newTrip));
+  postTrip(newTrip);
+}
+
+const postTrip = (data) => {
+  fetch ('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  }).then(response => response.json())
+    .catch(error => console.log(error))
+}
+
+
 const calculateNewTripCost = () => {
   let newDestination = newTripDestination.value;
   let destinationCost = allTrips.destinations.find((element) => {
@@ -62,7 +97,6 @@ const calculateNewTripCost = () => {
   result += (destinationCost.estimatedLodgingCostPerDay * newTripDuration.value * newTripPeopleCount.value) + (destinationCost.estimatedFlightCostPerPerson * newTripPeopleCount.value);
   return result;
 }
-
 
 const pageLoad = () => {
   getData();
@@ -85,7 +119,7 @@ const createTravelers = (data) => {
 const createTrips = (data, secondData) => {
   allTrips = new Trips(data, secondData)
   allTrips.createDestinations();
-
+  console.log(allTrips.trips)
 }
 
 const loginToDashboard = () => {
@@ -97,7 +131,6 @@ const loginToDashboard = () => {
 
 const getUserInfo = () => {
   currentUser = allTravelers.findTraveler(`${username.value}`);
-  console.log(currentUser)
 }
 
 const updateHomeMessage = () => {
@@ -105,7 +138,7 @@ const updateHomeMessage = () => {
 }
 
 const updateTrips = () => {
-  let userTrips = allTrips.findAllTrips(currentUser.id).sort((a,b) => b.date - a.date)
+  let userTrips = allTrips.findAllTrips(currentUser.id).sort((a, b) => b.date - a.date)
   userTrips.forEach((trip) => {
     pageTrips.innerHTML += `
         <div class="traveler-trip">
@@ -138,6 +171,8 @@ const showNewTripForm = () => {
 }
 
 const submitNewTripForm = () => {
+
+  submitNewTrip();
   planNewTrip();
   newTripDate.value = `2021-11-11`;
   newTripDuration.value = ``;
