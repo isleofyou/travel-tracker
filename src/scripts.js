@@ -145,6 +145,7 @@ const updateTrips = () => {
             <p>Date: ${dayjs(trip.date).format("dddd, MMMM D, YYYY")}</p> 
             <p>Destination: ${allTrips.findDestination(trip.destinationID)}</p> 
             <p>Trip length: ${trip.duration} days.</p>
+            <p>Status: ${trip.status} </p>
         </div>  
         `
   })
