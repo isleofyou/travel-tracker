@@ -46,8 +46,8 @@ const planNewTrip = () => {
       <p>Destination: ${newTripDestination.value}</p> 
       <p>Trip length: ${newTripDuration.value} days.</p>
       <p>Total people: ${newTripPeopleCount.value}</p>
-      <p>Price: ${calculateNewTripCost()}
-                + ${calculateNewTripCost() * .1} (agent's fee) = Total: $${Math.round(100 * (calculateNewTripCost() * 1.1)) / 100}</p>
+      <p>Price: $${calculateNewTripCost().toLocaleString()}
+                + $${(calculateNewTripCost() * .1).toLocaleString()} (agent's fee) = Total: $${(Math.round(100 * (calculateNewTripCost() * 1.1)) / 100).toLocaleString()}</p>
       <p>Status: Pending</p>
   </div>  
   `;
@@ -70,9 +70,8 @@ const submitNewTrip = () => {
     duration: newTripDuration.value,
     status: 'pending',
     suggestedActivities: [],
-  };
-  console.log(newTrip);
-  console.log(JSON.stringify(newTrip));
+  }
+
   postTrip(newTrip);
 }
 
@@ -138,7 +137,10 @@ const updateHomeMessage = () => {
 }
 
 const updateTrips = () => {
-  let userTrips = allTrips.findAllTrips(currentUser.id).sort((a, b) => b.date - a.date)
+  let userTrips = allTrips.findAllTrips(currentUser.id).sort((a, b) => {
+    if (a.date < b.date) {
+      return -1
+    }})
   userTrips.forEach((trip) => {
     pageTrips.innerHTML += `
         <div class="traveler-trip">
@@ -152,7 +154,7 @@ const updateTrips = () => {
 
 const updateTotalSpent = () => {
   totalSpent.innerText += `
-  You have spent $${allTrips.calculateTotalCost(currentUser.id)} this year.
+  You have spent $${allTrips.calculateTotalCost(currentUser.id).toLocaleString()} this year.
   `;
 }
 
