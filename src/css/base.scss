@@ -2,11 +2,18 @@
 @import '_variables';
 
 body {
-  background: $primary-background;
+  background: url('https://i.redd.it/gkg933hkexz71.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family:Arial, Helvetica, sans-serif
+}
+
+.dashboard {
+  border-radius: 1px;
 }
 
 @mixin header {
-  background: $primary-color;
   display: flex;
   justify-content: center;
 }
@@ -36,6 +43,7 @@ h1 {
 
 .traveler-trip {
   border: 1px solid $primary-color;
+  color: $primary-background;
 }
 
 .total-spent {
@@ -54,10 +62,13 @@ main {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  font: arial;
 }
 
 .login-page {
   position: absolute;
+  display: flex;
+  flex-direction: column;
 }
 
 .login-error {
@@ -71,4 +82,12 @@ main {
 .cost {
   display: flex;
   justify-content: end;
+}
+
+ .new-trip-form,
+ .total-cost,
+ .all-trips.message, 
+ .submitted-trips,
+ .total-spent {
+  color: $primary-background;
 }
