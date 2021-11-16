@@ -112,6 +112,7 @@ describe('Trips', () => {
     ];
 
     allTrips = new Trips(tripsRepo, destinations);
+    allTrips.createDestinations();
   });
 
   it('should be a function', () => {
@@ -182,5 +183,10 @@ describe('Trips', () => {
 
   it('should calculate the total costs of all trips for a user', () => {
     expect(allTrips.calculateTotalCost(3)).to.equal(0)
-  })
+  });
+  
+  it('should return the name of a destination', () => {
+    expect(allTrips.findDestination(3)).to.equal('Sydney, Austrailia')
+  });
+
 })
