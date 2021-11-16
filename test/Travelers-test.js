@@ -76,11 +76,12 @@ describe('Travelers', () => {
     expect(allTravelers).to.be.an.instanceOf(Travelers);
   })
 
-  it('should be able to locate a user by the ID number', () => {
-    expect(allTravelers.findTraveler(3)).to.deep.equal({
+  it('should be able to locate a user by the userLogin', () => {
+    expect(allTravelers.findTraveler('traveler3')).to.deep.equal({
       "id": 3,
       "name": "Sibby Dawidowitsch",
-      "travelerType": "shopper"
+      "travelerType": "shopper",
+      "login": 'traveler3',
     }
     );
 
