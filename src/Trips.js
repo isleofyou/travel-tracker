@@ -23,7 +23,7 @@ class Trips {
   calculateTotalCost(id) {
     let total = 0;
     let trips = this.findAllTrips(id).filter((data) => {
-      return (data.date <= "2021/12/31" && data.date >= "2021/01/01");
+      return (data.date <= "2021/12/31" && data.date >= "2021/01/01" && data.status === 'approved');
     });
     trips.forEach((trip) => {
       let specificTrip = this.createdDestinations.find((destination) => {
