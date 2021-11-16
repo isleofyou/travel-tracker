@@ -30,9 +30,17 @@ const loginError = document.querySelector('.login-error');
 const homeMessage = document.querySelector('.home-message');
 const priceCheck = document.querySelector('.total-cost');
 const totalCostButton = document.querySelector('.check-price');
+const submitErrorMessage = document.querySelector(".submit-error");
+
+const updateToday = () => {
+  newTripDate.value = Date.now();
+  newTripDate.min = Date.now();
+}
+
 
 const userLogin = () => {
-  if (password.value !== 'travel') {
+  let nameArray = username.value.split('r');
+  if (password.value !== 'travel' || nameArray[2] > 50 || nameArray[2] < 1 ) {
     loginError.innerText = `Incorrect username / password`;
   } else {
     loginPage.classList.add('hidden');
@@ -63,17 +71,22 @@ const locateDestinationID = (newDestination) => {
 }
 
 const submitNewTrip = () => {
-  let newTrip = {
-    id: Math.floor(Math.random() * 10000) + 205,
-    userID: currentUser.id, 
-    destinationID: locateDestinationID(newTripDestination.value), 
-    travelers: newTripPeopleCount.value,
-    date: dayjs(newTripDate.value).format('YYYY/MM/DD'),
-    duration: newTripDuration.value,
-    status: 'pending',
-    suggestedActivities: [],
+  if (newTripDestination.value && newTripPeopleCount.value && newTripDuration.value && newTripDate.value) {
+    let newTrip = {
+      id: Math.floor(Math.random() * 10000) + 205,
+      userID: currentUser.id, 
+      destinationID: locateDestinationID(newTripDestination.value), 
+      travelers: newTripPeopleCount.value,
+      date: dayjs(newTripDate.value).format('YYYY/MM/DD'),
+      duration: newTripDuration.value,
+      status: 'pending',
+      suggestedActivities: [],
+    }
+    postTrip(newTrip);
+    submitErrorMessage.innerText = ``;
+  } else {
+    submitErrorMessage.innerText = `Please fill out all fields`;
   }
-  postTrip(newTrip);
 }
 
 const postTrip = (data) => {
@@ -127,6 +140,7 @@ const loginToDashboard = () => {
   updateTrips();
   updateTotalSpent();
   updateHomeMessage();
+  updateToday();
 }
 
 const getUserInfo = () => {
@@ -172,7 +186,6 @@ const showNewTripForm = () => {
 }
 
 const submitNewTripForm = () => {
-
   submitNewTrip();
   planNewTrip();
   newTripDate.value = `2021-11-11`;
@@ -184,9 +197,14 @@ const submitNewTripForm = () => {
 }
 
 const calculateTotal = () => {
-  priceCheck.innerText = `Trip cost: $${calculateNewTripCost().toLocaleString()}
+  if (newTripDestination.value && newTripPeopleCount.value && newTripDuration.value && newTripDate.value) {
+    priceCheck.innerText = `Trip cost: $${calculateNewTripCost().toLocaleString()}
   + $${(calculateNewTripCost() * .1).toLocaleString()} (agent's fee) 
   = Total: $${(Math.round(100 * (calculateNewTripCost() * 1.1)) / 100).toLocaleString()}`;
+    submitErrorMessage.innerText = ``;
+  } else {
+    priceCheck.innerText = "Please select all options."
+  }
 }
 
 window.addEventListener('load', pageLoad);
