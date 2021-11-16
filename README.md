@@ -36,6 +36,8 @@
 
 1. This application loads from multiple repos and shows a user an easily readable dashboard with past, present, and future trips. The application also allows for a user to submit a new trip request that includes the date, duration, number of people, and destination. The application then can calculate the total cost prior to submitting. If the user submits this trip, it is posted to the trips repo and added to a form that shows pending trips for that session. Once the page is reloaded, the user's pending trips are added to the form on top. 
 
+![travel-tracker-gif](https://user-images.githubusercontent.com/60856601/142065348-d2721980-0a9c-48dd-874e-e8d17c04b03c.gif)
+
 
 ## Wins
 
