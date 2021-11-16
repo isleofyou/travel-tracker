@@ -64,7 +64,7 @@ const locateDestinationID = (newDestination) => {
 
 const submitNewTrip = () => {
   let newTrip = {
-    id: undefined,
+    id: Math.floor(Math.random() * 10000) + 205,
     userID: currentUser.id, 
     destinationID: locateDestinationID(newTripDestination.value), 
     travelers: newTripPeopleCount.value,
