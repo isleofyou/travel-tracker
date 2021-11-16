@@ -1,19 +1,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Project screenshot](https://user-images.githubusercontent.com/60856601/142059848-c3d0906f-5ec4-4ac4-a33e-d12a84892155.png alt="screenshot of project")
-
+![Project screenshot](https://user-images.githubusercontent.com/60856601/142059848-c3d0906f-5ec4-4ac4-a33e-d12a84892155.png)
 
 ### Built With
 
 * JavaScript
 * Sass
 * HTML
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 
 ### Installation
 
@@ -38,18 +32,11 @@
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
-<!-- USAGE EXAMPLES -->
 ## Usage
 
 1. This application loads from multiple repos and shows a user an easily readable dashboard with past, present, and future trips. The application also allows for a user to submit a new trip request that includes the date, duration, number of people, and destination. The application then can calculate the total cost prior to submitting. If the user submits this trip, it is posted to the trips repo and added to a form that shows pending trips for that session. Once the page is reloaded, the user's pending trips are added to the form on top. 
-2. 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-<!-- Wins -->
 ## Wins
 
 The biggest win for me was again completion time. I focused primarily on functionality over looks and finished the entire functionality in two days. With the time I had left I went back to update the styling and fixed minor bugs. 
@@ -65,4 +52,5 @@ By biggest challenge with this project was styling. I do not have much experienc
 ## Contributing
 
 [Colgan Meanor](https://github.com/colganmeanor)
+
 [Nate Ewert-Krocker](https://github.com/NEwertKrocker)
