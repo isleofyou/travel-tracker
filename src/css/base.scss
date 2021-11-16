@@ -20,7 +20,6 @@ body {
 
 h1 {
   @include header;
-  border-radius: 4px;
 }
 
 .all-trips {
@@ -30,6 +29,8 @@ h1 {
   overflow: auto;
   float: left;
   position: relative;
+  border-radius: 1px;
+  border-color: $primary-color;
   }
 
 .pending-trips{
@@ -43,7 +44,7 @@ h1 {
 
 .traveler-trip {
   border: 1px solid $primary-color;
-  color: $primary-background;
+  color: $primary-font-color;
 }
 
 .total-spent {
@@ -89,5 +90,5 @@ main {
  .all-trips.message, 
  .submitted-trips,
  .total-spent {
-  color: $primary-background;
+  color: $primary-font-color;
 }

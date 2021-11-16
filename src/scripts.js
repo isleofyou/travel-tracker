@@ -9,6 +9,7 @@ const dayjs = require('dayjs');
 let allTravelers;
 let allTrips;
 let currentUser;
+let today = Date.now();
 
 const pageTrips = document.querySelector(".all-trips");
 const totalSpent = document.querySelector(".total-spent");
@@ -31,6 +32,8 @@ const homeMessage = document.querySelector('.home-message');
 const priceCheck = document.querySelector('.total-cost');
 const totalCostButton = document.querySelector('.check-price');
 const submitErrorMessage = document.querySelector(".submit-error");
+const submittedTripsForm = document.querySelector(".pending-trips");
+const submittedTripsMessage = document.querySelector(".submitted-trips")
 
 const updateToday = () => {
   newTripDate.value = Date.now();
@@ -97,7 +100,7 @@ const postTrip = (data) => {
     },
     body: JSON.stringify(data)
   }).then(response => response.json())
-    .catch(error => console.log(error))
+    .catch(error => window.alert(error));
 }
 
 
@@ -121,7 +124,8 @@ const getData = () => {
   }).then(values => {
     createTravelers(values[0].travelers)
     createTrips(values[1].trips, values[2].destinations);
-  })
+    
+  }).catch(error => window.alert(error));
 }
 
 const createTravelers = (data) => {
@@ -188,16 +192,19 @@ const showNewTripForm = () => {
 const submitNewTripForm = () => {
   submitNewTrip();
   planNewTrip();
-  newTripDate.value = `2021-11-11`;
+  newTripDate.value = today;
   newTripDuration.value = ``;
   newTripDestination.value = ``;
   newTripPeopleCount.value = ``;
   pendingTrips.value = ``;
   showNewTripForm();
+  showSubmittedTrips();
 }
 
 const calculateTotal = () => {
-  if (newTripDestination.value && newTripPeopleCount.value && newTripDuration.value && newTripDate.value) {
+  if (newTripDate.value < today) {
+    priceCheck.innerText = "Please select a valid date.";
+  } else if (newTripDestination.value && newTripPeopleCount.value && newTripDuration.value && newTripDate.value) {
     priceCheck.innerText = `Trip cost: $${calculateNewTripCost().toLocaleString()}
   + $${(calculateNewTripCost() * .1).toLocaleString()} (agent's fee) 
   = Total: $${(Math.round(100 * (calculateNewTripCost() * 1.1)) / 100).toLocaleString()}`;
@@ -205,6 +212,11 @@ const calculateTotal = () => {
   } else {
     priceCheck.innerText = "Please select all options."
   }
+}
+
+const showSubmittedTrips = () => {
+  submittedTripsForm.classList.remove("hidden");
+  submittedTripsMessage.classList.remove("hidden");
 }
 
 window.addEventListener('load', pageLoad);
@@ -217,3 +229,4 @@ password.addEventListener('keypress', function (e) {
     userLogin();
   }
 });
+
