@@ -54,6 +54,7 @@ By biggest challenge with this project was styling. I do not have much experienc
 <!-- CONTRIBUTORS -->
 ## Contributors
 PR reviews:
+
 [Colgan Meanor](https://github.com/colganmeanor)
 
 [Nate Ewert-Krocker](https://github.com/NEwertKrocker)
