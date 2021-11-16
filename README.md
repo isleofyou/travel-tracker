@@ -28,7 +28,7 @@
    npm start
    ```
 5. Open the travel-tracker program and run npm start
-6. Log in with username: traveler(1-50) and password: travel
+6. Log in with username: traveler(1-50) and password: travel.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -41,18 +41,18 @@
 
 ## Wins
 
-The biggest win for me was again completion time. I focused primarily on functionality over looks and finished the entire functionality in two days. With the time I had left I went back to update the styling and fixed minor bugs. 
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+The biggest win for me was again completion time. I focused primarily on functionality over looks and finished the entire functionality in two days. With the time I had left I went back to update the styling and fixed minor bugs. I also did not run into any issues that took up a lot of time to solve. 
 
 <!-- Challenges -->
 ## Challenges 
 
 By biggest challenge with this project was styling. I do not have much experience with creating nicely designed web pages and look forward to coming back to this project and tweaking with the looks of it. 
 
-<!-- CONTRIBUTING -->
-## Contributing
-
+<!-- CONTRIBUTORS -->
+## Contributors
+PR reviews:
 [Colgan Meanor](https://github.com/colganmeanor)
 
 [Nate Ewert-Krocker](https://github.com/NEwertKrocker)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
