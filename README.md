@@ -34,7 +34,6 @@
    
 7. Log in with username: traveler(1-50) and password: travel.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Usage
 
