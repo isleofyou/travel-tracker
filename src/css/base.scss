@@ -67,3 +67,8 @@ main {
 .hidden {
   visibility: hidden;  
 }
+
+.cost {
+  display: flex;
+  justify-content: end;
+}

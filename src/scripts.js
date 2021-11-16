@@ -28,6 +28,8 @@ const loginPage = document.querySelector(".login-page");
 const userDashboard = document.querySelector('.dashboard');
 const loginError = document.querySelector('.login-error');
 const homeMessage = document.querySelector('.home-message');
+const priceCheck = document.querySelector('.total-cost');
+const totalCostButton = document.querySelector('.check-price');
 
 const userLogin = () => {
   if (password.value !== 'travel') {
@@ -62,7 +64,7 @@ const locateDestinationID = (newDestination) => {
 
 const submitNewTrip = () => {
   let newTrip = {
-    id: (allTrips.trips.length + 1),
+    id: undefined,
     userID: currentUser.id, 
     destinationID: locateDestinationID(newTripDestination.value), 
     travelers: newTripPeopleCount.value,
@@ -71,7 +73,6 @@ const submitNewTrip = () => {
     status: 'pending',
     suggestedActivities: [],
   }
-
   postTrip(newTrip);
 }
 
@@ -93,7 +94,7 @@ const calculateNewTripCost = () => {
     return element.destination === newDestination;
   });
   let result = 0;
-  result += (destinationCost.estimatedLodgingCostPerDay * newTripDuration.value * newTripPeopleCount.value) + (destinationCost.estimatedFlightCostPerPerson * newTripPeopleCount.value);
+  result += (destinationCost.estimatedLodgingCostPerDay * newTripDuration.value * newTripPeopleCount.value) + (destinationCost.estimatedFlightCostPerPerson * newTripPeopleCount.value );
   return result;
 }
 
@@ -137,10 +138,7 @@ const updateHomeMessage = () => {
 }
 
 const updateTrips = () => {
-  let userTrips = allTrips.findAllTrips(currentUser.id).sort((a, b) => {
-    if (a.date < b.date) {
-      return -1
-    }})
+  let userTrips = allTrips.findAllTrips(currentUser.id)
   userTrips.forEach((trip) => {
     pageTrips.innerHTML += `
         <div class="traveler-trip">
@@ -169,7 +167,7 @@ const addDestinations = () => {
 
 const showNewTripForm = () => {
   addDestinations();
-  newTripForm.classList.toggle('hidden');
+  newTripForm.classList.remove('hidden');
 }
 
 const submitNewTripForm = () => {
@@ -184,10 +182,17 @@ const submitNewTripForm = () => {
   showNewTripForm();
 }
 
+const calculateTotal = () => {
+  priceCheck.innerText = `Trip cost: $${calculateNewTripCost().toLocaleString()}
+  + $${(calculateNewTripCost() * .1).toLocaleString()} (agent's fee) 
+  = Total: $${(Math.round(100 * (calculateNewTripCost() * 1.1)) / 100).toLocaleString()}`;
+}
+
 window.addEventListener('load', pageLoad);
 planTripButton.addEventListener('click', showNewTripForm);
 submitTrip.addEventListener('click', submitNewTripForm);
 loginButton.addEventListener('click', userLogin);
+totalCostButton.addEventListener('click', calculateTotal);
 password.addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
     userLogin();
