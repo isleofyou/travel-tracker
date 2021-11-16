@@ -84,7 +84,5 @@ describe('Travelers', () => {
       "login": 'traveler3',
     }
     );
-
-
   })
 })

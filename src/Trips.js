@@ -1,7 +1,5 @@
 import Destinations from "./Destinations";
 
-
-
 class Trips {
   constructor(tripsData, destinationData) {
     this.trips = tripsData;

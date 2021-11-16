@@ -40,7 +40,6 @@ const updateToday = () => {
   newTripDate.min = Date.now();
 }
 
-
 const userLogin = () => {
   let nameArray = username.value.split('r');
   if (password.value !== 'travel' || nameArray[2] > 50 || nameArray[2] < 1 ) {
@@ -70,7 +69,7 @@ const locateDestinationID = (newDestination) => {
   let result = allTrips.destinations.find((destination) => {
     return destination.destination === newDestination;
   })
-  return result.id
+  return result.id;
 }
 
 const submitNewTrip = () => {
@@ -136,7 +135,6 @@ const createTravelers = (data) => {
 const createTrips = (data, secondData) => {
   allTrips = new Trips(data, secondData)
   allTrips.createDestinations();
-  console.log(allTrips.trips)
 }
 
 const loginToDashboard = () => {
@@ -229,4 +227,3 @@ password.addEventListener('keypress', function (e) {
     userLogin();
   }
 });
-
