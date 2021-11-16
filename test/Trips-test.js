@@ -188,5 +188,4 @@ describe('Trips', () => {
   it('should return the name of a destination', () => {
     expect(allTrips.findDestination(3)).to.equal('Sydney, Austrailia')
   });
-
-})
+});
