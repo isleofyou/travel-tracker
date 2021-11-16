@@ -9,7 +9,7 @@
 * Sass
 * HTML
 
-### Installation
+### Installation and Startup
 
 1. Clone the repo
    ```sh
@@ -27,8 +27,12 @@
    ```sh
    npm start
    ```
-5. Open the travel-tracker program and run npm start
-6. Log in with username: traveler(1-50) and password: travel.
+5. Open the travel-tracker program and run 
+   ```sh
+   npm start
+   ```
+   
+7. Log in with username: traveler(1-50) and password: travel.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
